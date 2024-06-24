@@ -15,12 +15,14 @@ public:
     }
 };
 
-void Insert_In_Tail(Node *head,int val)
+void Insert_In_Tail(Node *&head,int val)
 {
     Node* newNode = new Node(val);
     if(head == NULL)
     {
         head = newNode;
+        cout<<"Value Inserted Successfully\n";
+        return;
     }
     Node *tmp = head;
     while(tmp->next!=NULL)
@@ -28,10 +30,17 @@ void Insert_In_Tail(Node *head,int val)
         tmp = tmp->next;
     }
     tmp->next = newNode;
+    cout<<"Value Inserted Successfully\n";
 }
 
 void Print_Linked_List(Node* head)
 {
+    if(head == NULL)
+    {
+        cout<<"Your Linked List is empty\n";
+        return;
+    }
+    cout<<"Your Linked List is: ";
     Node* tmp = head;
     while(tmp!=NULL)
     {
@@ -42,9 +51,26 @@ void Print_Linked_List(Node* head)
 }
 
 int main() {
-    int n =100;
-    Node* head = new Node(10);
-    Insert_In_Tail(head,n);
-    Print_Linked_List(head);
+    Node* head = NULL;
+    while(1)
+    {
+        cout<<"Op-1: Insert a Value\n";
+        cout<<"Op-2: Print Linked List\n";
+        int op;
+        cout<<"Enter an Option: ";
+        cin>>op;
+        if(op == 1)
+        {
+            int n;
+            cout<<"Enter the Value: ";
+            cin>>n;
+            Insert_In_Tail(head,n);
+        }
+        else if(op == 2)
+        {
+            Print_Linked_List(head);
+        }
+        else break;
+    }
     return 0;
 }
