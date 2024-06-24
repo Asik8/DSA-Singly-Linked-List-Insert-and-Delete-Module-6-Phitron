@@ -15,11 +15,30 @@ public:
     }
 };
 
-void Insert_at_head(Node* head,int val)
+void Insert_at_head(Node* &head,int val)
 {
     Node* newNode = new Node(val);
     newNode->next = head;
     head = newNode;
+    cout<<"Node Added\n";
+}
+
+void Insert_In_Tail(Node *&head,int val)
+{
+    Node* newNode = new Node(val);
+    if(head == NULL)
+    {
+        head = newNode;
+        cout<<"Value Inserted Successfully\n";
+        return;
+    }
+    Node *tmp = head;
+    while(tmp->next!=NULL)
+    {
+        tmp = tmp->next;
+    }
+    tmp->next = newNode;
+    cout<<"Value Inserted Successfully\n";
 }
 
 void Insert_any_position(Node *&head,int pos,int val)
@@ -41,24 +60,6 @@ void Insert_any_position(Node *&head,int pos,int val)
     }
     Node* newNode = new Node(val);
     newNode->next = tmp->next;
-    tmp->next = newNode;
-    cout<<"Value Inserted Successfully\n";
-}
-
-void Insert_In_Tail(Node *&head,int val)
-{
-    Node* newNode = new Node(val);
-    if(head == NULL)
-    {
-        head = newNode;
-        cout<<"Value Inserted Successfully\n";
-        return;
-    }
-    Node *tmp = head;
-    while(tmp->next!=NULL)
-    {
-        tmp = tmp->next;
-    }
     tmp->next = newNode;
     cout<<"Value Inserted Successfully\n";
 }
