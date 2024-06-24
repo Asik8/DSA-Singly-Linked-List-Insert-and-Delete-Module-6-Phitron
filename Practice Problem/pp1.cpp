@@ -110,6 +110,25 @@ void Delete_tail(Node* &head)
     cout<<"Tail Deleted Successfully\n";
 }
 
+void Delete_Any_Position(Node* head,int pos,int val)
+{
+    Node *tmp = head;
+    for(int i=1;i<pos;i++)
+    {
+        tmp = tmp->next;
+    }
+    if(tmp->next == NULL)
+    {
+        Delete_tail(head);
+        cout<<"Your Desired node deleted successfully\n";
+        return;
+    }
+    Node* deleteNode = tmp->next;
+    tmp->next = tmp->next->next;
+    delete deleteNode;
+    cout<<"Your Desired node deleted successfully\n";
+}
+
 void Print(Node* head)
 {
     if (head == NULL) 
@@ -169,5 +188,11 @@ int main() {
     Delete_tail(head);
     Print(head);
 
+    // Delete any Position
+    cin>>pos,val;
+    if(pos == 0) Delete_head(head);
+    else Delete_Any_Position(head,pos,val);
+    Print(head);
+    
     return 0;
 }
