@@ -4,7 +4,7 @@ using namespace std;
 #define pb push_back
 #define pob pop_back
 
-void f(int *ptr)    // here p and ptr pointing on a same location. their address is not same.
+void f(int *ptr)
 {
     *ptr = 20;      // changing value of val
     ptr = NULL;     // making ptr NULL, which does not affect p pf the main function
